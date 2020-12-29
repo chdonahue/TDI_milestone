@@ -1,0 +1,9 @@
+/* Add some margin to the page and set a default font and colour */
+
+body {
+  margin: 30px;
+  font-family: "Helvetica", serif;
+  line-height: 1.8em;
+  background-color:#FFF8DC;
+}
+

@@ -4,7 +4,6 @@ import pandas as pd
 from bokeh.embed import components
 from bokeh.plotting import figure
 import os
-# from alpha_vantage.timeseries import Time
 
 app = Flask(__name__)
 
@@ -33,9 +32,12 @@ def plot_stock(ticker):
 		p.line(s.index, s)
 	return p,error_message,month,year
 
+
+
 @app.route('/')
 def index():
 	return render_template('stock.html')
+
 
 @app.route('/graph',methods=['GET','POST'])
 def graph():
@@ -47,11 +49,8 @@ def graph():
 	kwargs['error_message'] = error_message
 	return render_template('graph.html',**kwargs)
 
-@app.route('/about')
-def about():
-  return render_template('about.html')
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
 	app.run(host='0.0.0.0', port=port)
-  # app.run(port=33507)
+	# app.run(port=33507, debug=True)
