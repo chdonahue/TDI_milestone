@@ -36,6 +36,16 @@ def plot_stock(ticker):
 def index():
 	return render_template('stock.html')
 
+@app.route('/graph',methods=['GET','POST'])
+def graph():
+	ticker = request.form['stock_pick']
+	p,error_message,month,year = plot_stock(ticker)
+	script, div =components(p)
+	kwargs = {'script':script,'div':div}
+	kwargs['title'] = 'Stock Display'
+	kwargs['error_message'] = error_message
+	return render_template('graph.html',**kwargs)
+
 @app.route('/about')
 def about():
   return render_template('about.html')
