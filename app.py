@@ -31,7 +31,7 @@ def plot_stock(ticker):
 		p.xaxis.axis_label = 'Time'
 		p.yaxis.axis_label = 'Value'
 		p.line(s.index, s)
-	return p,error_message,month,year,s
+	return p,error_message,month,year
 
 @app.route('/')
 def index():
@@ -45,7 +45,6 @@ def graph():
 	kwargs = {'script':script,'div':div}
 	kwargs['title'] = 'Stock Display'
 	kwargs['error_message'] = error_message
-	kwargs['data'] = s
 	return render_template('graph.html',**kwargs)
 
 @app.route('/about')
